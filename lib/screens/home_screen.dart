@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (imageList.isNotEmpty) {
+          if (widget.cameras.isNotEmpty) {
             Navigator.push(
               context,
               MaterialPageRoute(
