@@ -19,7 +19,7 @@ class _CameraScreenState extends State<CameraScreen> {
   late CameraController cameraController;
   late Future<void> cameraValue;
   bool isFlashOn = false;
-  bool isRearCamera = true;
+  bool isRearCamera = false;
   bool isLoading = false;
 
   Future<File> saveImage(XFile image) async {
@@ -78,7 +78,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   @override
   void initState() {
-    startCamera(1);
+    startCamera(0);
     super.initState();
   }
 
@@ -97,10 +97,14 @@ class _CameraScreenState extends State<CameraScreen> {
         shape: const CircleBorder(),
         onPressed: takePicture,
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? const SizedBox(
+                height: 30,
+                width: 30,
+                child: CircularProgressIndicator(),
+              )
             : const Icon(
                 Icons.camera_alt,
-                size: 40,
+                size: 45,
                 color: Colors.black87,
               ),
       ),

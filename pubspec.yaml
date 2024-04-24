@@ -42,6 +42,7 @@ dev_dependencies:
   gap: ^3.0.1
   external_path: ^1.0.3
   media_scanner: ^2.1.0
+  hive_flutter: ^1.0.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:camera_app/main.dart';
 import 'package:camera_app/screens/camera_screen.dart';
 import 'package:camera_app/screens/view_image_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,20 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       imageList.add(imagePath);
     });
+    capturedImageBox!.put(imagePath.split('/').last, imagePath);
+  }
+
+  void fetchCapturedImages() {
+    imageList.clear();
+    setState(() {
+      imageList.addAll(capturedImageBox!.values.map((e) => e.toString()));
+    });
+  }
+
+  @override
+  void initState() {
+    fetchCapturedImages();
+    super.initState();
   }
 
   @override
