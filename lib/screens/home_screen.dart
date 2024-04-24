@@ -5,7 +5,6 @@ import 'package:camera_app/main.dart';
 import 'package:camera_app/screens/camera_screen.dart';
 import 'package:camera_app/screens/view_image_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart ';
 import 'package:gap/gap.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -101,17 +100,23 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CameraScreen(
-                cameras: widget.cameras,
-                onPress: (imagePath) {
-                  addImageToList(imagePath);
-                },
+          if (imageList.isNotEmpty) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CameraScreen(
+                  cameras: widget.cameras,
+                  onPress: (imagePath) {
+                    addImageToList(imagePath);
+                  },
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Camera not available!'),
+            ));
+          }
         },
         child: const Icon(Icons.add),
       ),
